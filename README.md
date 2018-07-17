@@ -9,7 +9,7 @@
 ## Содержание
 
 1. [Синтаксис и форматирование](#syntax)
-2. [Порядок объявления](#order)
+2. [Порядок объявления](#declaration-order)
 3. [Именование классов](#naming)
 4. [Сокращенная запись](#shornings)
 5. [Вложенность в SCSS](#scss-nesting)
@@ -106,9 +106,55 @@ box-shadow:0px 1px 2px #CCC,inset 0px 1px 0px #FFFFFF}
 ```
 
 
-<a name="order"></a>
+<a name="declaration-order"></a>
 
 ## 2. Порядок объявления
+
+Объявления логически связанных свойств должны быть сгруппированы в следующем порядке:
+
+1. Позиционирование
+2. Блочная модель
+3. Типографика
+4. Отображение
+5. Прочее
+
+Позиционирование следует первым потому, что оно может удалить элемент из нормального потока документа и переопределить блочную модель связанных стилей. Блочная модель идет следующей, так как она диктует размеры и расположение компонента.
+
+Все остальные объявления, выполняющиеся внутри компонента или не оказывающие влияния на предыдущие два раздела, следуют в последнюю очередь.
+
+### Пример
+``` css
+
+.declaration-order {
+    /* Positioning */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+
+    /* Box-model */
+    display: block;
+    float: right;
+    width: 100px;
+    height: 100px;
+
+    /* Typography */
+    font: normal 13px "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+    color: #333333;
+    text-align: center;
+
+    /* Visual */
+    background-color: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+
+    /* Misc */
+    opacity: 1;
+}
+```
 
 <a name="naming"></a>
 
