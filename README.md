@@ -14,7 +14,7 @@
 4. [Сокращенная запись](#shornings)
 5. [Вложенность в SCSS](#scss-nesting)
 6. [Организация кода](#code-organization)
-7. [Комментарии](#comments)
+<!-- 7. [Комментарии](#comments) -->
 
 <a name="syntax"></a>
 
@@ -204,7 +204,7 @@ box-shadow:0px 1px 2px #CCC,inset 0px 1px 0px #FFFFFF}
 
 #### Плохо :no_entry:
 ```css
-.element {
+.block {
     margin: 0 0 10px;
     background: red;
     background: url("image.jpg");
@@ -214,7 +214,7 @@ box-shadow:0px 1px 2px #CCC,inset 0px 1px 0px #FFFFFF}
 
 #### Хорошо :white_check_mark:
 ```css
-.element {
+.block {
     margin-bottom: 10px;
     background-color: red;
     background-image: url("image.jpg");
@@ -227,7 +227,68 @@ box-shadow:0px 1px 2px #CCC,inset 0px 1px 0px #FFFFFF}
 
 ## 5. Вложенность в SCSS
 
+Избегай лишней вложенности. То, что ты можешь использовать вложенность, не означает, что это всегда надо делать. Зачастую вложенность элементов в блок усложняет чтение кода.
 
+Когда применять вложенность:
+- для псевдоэлементов `::before` и `::after`
+- для всевдоклассов `:hover`, `:active`, `:checked` и т. п.
+- для медиазапросов и миксинов их реализующих.
+- для модификаторов (`&--modifier`)
+
+Когда **НЕ** применять вложенность:
+- для элементов (`.block__element`, а не `.block` &rarr; `&__element`)
+- для дочерних элементов, если нужно сократить область видимости (`.block__text p`, а не `.block` &rarr; `&__text` &rarr; `& p`)
+- если уровень вложенности больше трёх.
+
+Если кратко: **один элемент DOM — одно правило**.
+
+### Пример 
+
+#### Плохо :no_entry:
+```scss
+.block {
+    color: green;
+
+    &__element-1 {
+        color: red;
+
+        &:hover {
+            color: tomato;
+        }
+    }
+
+    &__element-2 {
+        color: orange;
+
+        & p {
+            color: blue;
+        }
+    }
+}
+```
+
+#### Хорошо :white_check_mark:
+```scss
+.block {
+    color: green;
+}
+
+.block__element-1 {
+    color: red;
+
+    &:hover {
+        color: tomato;
+    }
+}
+
+.block__element-2 {
+    color: orange;
+}
+
+.block__element-2 p {
+    color: blue;
+}
+```
 
 <a name="code-organization"></a>
 
@@ -235,4 +296,4 @@ box-shadow:0px 1px 2px #CCC,inset 0px 1px 0px #FFFFFF}
 
 <a name="comments"></a>
 
-## 7. Комментарии
+<!-- ## 7. Комментарии -->
