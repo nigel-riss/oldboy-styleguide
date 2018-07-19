@@ -187,9 +187,47 @@ box-shadow:0px 1px 2px #CCC,inset 0px 1px 0px #FFFFFF}
 
 ## 4. Сокращенная запись
 
+Старайся ограничить использование сокращенных объявлений в тех случаях, когда необходимо явно задать все доступные значения. Наиболее часто злоупотребляют сокращением следующих свойств:
+
+- padding
+- margin
+- font
+- background
+- border
+- border-radius
+
+Часто нам не нужно устанавливать все значения сокращенной записи свойства. Например, HTML заголовки устанавливают только отступы сверху и снизу, таким образом, в случае необходимости нужно переопределить только эти два значения. Чрезмерное использование сокращенной записи свойств часто приводит к грязному коду с ненужными переопределения и непреднамеренными побочными эффектами.
+
+На сайте Mozilla Developer Network есть отличная статья о [сокращенной записи свойств](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) для тех кто не знаком с такой формой записи.
+
+### Пример 
+
+#### Плохо :no_entry:
+```css
+.element {
+    margin: 0 0 10px;
+    background: red;
+    background: url("image.jpg");
+    border-radius: 3px 3px 0 0;
+}
+```
+
+#### Хорошо :white_check_mark:
+```css
+.element {
+    margin-bottom: 10px;
+    background-color: red;
+    background-image: url("image.jpg");
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+```
+
 <a name="scss-nesting"></a>
 
 ## 5. Вложенность в SCSS
+
+
 
 <a name="code-organization"></a>
 
