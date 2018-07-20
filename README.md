@@ -14,7 +14,7 @@
 4. [Сокращенная запись](#shornings)
 5. [Вложенность в SCSS](#scss-nesting)
 6. [Организация кода](#code-organization)
-<!-- 7. [Комментарии](#comments) -->
+7. [Комментарии](#comments)
 
 <a name="syntax"></a>
 
