@@ -296,4 +296,35 @@ box-shadow:0px 1px 2px #CCC,inset 0px 1px 0px #FFFFFF}
 
 <a name="comments"></a>
 
+Придерживайся следующей структуры проекта для стилей.
+
+```
+sass/
+|- base/
+|   |- _global.scss
+|   |- _mixins.scss
+|   |- _vars.scss
+|   |- _wordpress.scss
+|
+|- fonts/
+|   |- _fonts.scss
+|   |- _icons.scss
+|
+|- modules/
+|   |- _about.scss
+|   |- _button.scss
+|   |- _contact.scss
+|   ... Etc.
+|
+`- styles.scss
+```
+- В директории `base` следует размещать файлы базовых стилей, стили, миксины и переменные.
+- В директории `fonts` — стили шрифтов и иконок
+- В директории `modules` — стили отдельных блоков проекта
+- Файл styles.scss — основной файл стилей. В нём должны содержаться только директивы `@import` и комментарии
+
+
+
+
+
 <!-- ## 7. Комментарии -->
